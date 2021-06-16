@@ -39,9 +39,26 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
+function Person(name, age) {
+  const stomach = [];
+  this.stomach = stomach,
+  this.name = name,
+  this.age = age
+}
+
+Person.prototype.eat = function(food){
+  
+  if(this.stomach.length < 10){
+   return this.stomach.push(food);
   }
+}
+Person.prototype.poop = function(){
+    return this.stomach.length = 0;
+}
+
+Person.prototype.toString = function(){
+  return `${this.name} and ${this.age}`;
+}
  
  
 
@@ -63,10 +80,19 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
+function Car(model, milesPerGallon) {
+  const tank = 0;
+  const odometer = 0;
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = tank;
+  this.odometer = odometer;
+
     
-  }
-  
+}
+Car.prototype.fill = function(gallons){
+  return this.tank = this.tank + gallons
+}
   
   /*
     TASK 3
@@ -75,18 +101,22 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
-  }
- 
+function Baby(name, age, favoriteToy) {
+     Person.call(this, name, age);
+     this.favoriteToy = favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+} 
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. making new attr for obj in constructor func
+    2. refering to the left of the .
+    3. refers to specific attr
+    4. calling window, globalobject, or undefined (an error)
   */
   
   
